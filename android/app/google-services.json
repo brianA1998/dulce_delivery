@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1051522932201",
+    "project_id": "dulce-delivery",
+    "storage_bucket": "dulce-delivery.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1051522932201:android:afe536d1fb44bf0274ff78",
+        "android_client_info": {
+          "package_name": "com.example.dulces_delivery"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1051522932201-r70n6klofk64f4gi3ht3udj03k3eia3g.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAm4KGZnGocn0Pin7TIT4Hs6PGLNh8Ri_M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1051522932201-r70n6klofk64f4gi3ht3udj03k3eia3g.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
