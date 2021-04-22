@@ -1,3 +1,4 @@
+import 'package:dulces_delivery/widgets/side_bar_widget.dart';
 import 'package:flutter/material.dart';
 
 class ProductsPage extends StatefulWidget {
@@ -10,25 +11,18 @@ class _ProductsPageState extends State<ProductsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          setState(() {});
+        },
+      ),
       appBar: AppBar(
         backgroundColor: Color(0xffD2B48C),
         centerTitle: true,
         elevation: 20.0,
         title: Text('Dulce Delivery'),
       ),
-      drawer: Drawer(
-        child: ListView(
-          children: <Widget>[
-            DrawerHeader(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [Image.asset('assets/img/logo.jpeg')],
-              ),
-              decoration: BoxDecoration(color: Color(0xffDEB887)),
-            ),
-          ],
-        ),
-      ),
+      drawer: SideBarWidget(),
       body: Center(),
     );
   }

@@ -10,6 +10,7 @@ class Product {
   int _cuantityProduct;
   String _descriptionProduct;
 
+  //Mapeo de objetos
   Product.map(dynamic obj) {
     this._nameProduct = obj['nameProduct'];
     this._priceProduct = obj['priceProduct'];
@@ -23,5 +24,10 @@ class Product {
   int get cuantity => _cuantityProduct;
   String get description => _descriptionProduct;
 
-  Product.fromSnapShot(DataSnapshot snapshot) {}
+  Product.fromSnapShot(DataSnapshot snapshot) {
+    _idProduct = snapshot.key;
+    _nameProduct = snapshot.value['nameProduct'];
+    _priceProduct = snapshot.value['priceProduct'];
+    _cuantityProduct = snapshot.value['cuantityProduct'];
+    _descriptionProduct = snapshot.value['descriptionProduct'];
 }
