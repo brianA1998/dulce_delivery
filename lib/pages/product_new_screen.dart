@@ -1,4 +1,5 @@
 import 'package:dulces_delivery/objects/product.dart';
+import 'package:dulces_delivery/utils/constans.dart';
 import 'package:dulces_delivery/widgets/side_bar_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -41,7 +42,7 @@ class _ProductNewScreenState extends State<ProductNewScreen> {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          backgroundColor: Color(0xffD2B48C),
+          backgroundColor: colorPastel,
           centerTitle: true,
           elevation: 20.0,
           title: Text('Nuevo Dulce'),
@@ -75,13 +76,16 @@ class _ProductNewScreenState extends State<ProductNewScreen> {
   }
 
   Widget _nameProduct() {
-    return TextField(
-      controller: _name,
-      style: TextStyle(fontSize: 20.0, color: Colors.black),
-      decoration: InputDecoration(
-        icon: Icon(FontAwesomeIcons.candyCane),
-        labelText: 'Nombre del producto',
-      ),
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 30.0),
+      child: TextField(
+          controller: _name,
+          style: TextStyle(fontSize: 20.0, color: Colors.black),
+          decoration: InputDecoration(
+            icon: Icon(FontAwesomeIcons.candyCane),
+            labelText: 'Nombre del producto',
+            labelStyle: TextStyle(color: colorPastel),
+          )),
     );
   }
 }
