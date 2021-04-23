@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:dulces_delivery/objects/product.dart';
 import 'package:dulces_delivery/pages/product_new_screen.dart';
 import 'package:dulces_delivery/widgets/side_bar_widget.dart';
@@ -15,13 +17,24 @@ final productReference = FirebaseDatabase.instance.reference().child('dulces');
 
 class _ProductsPageState extends State<ProductsPage> {
   List<Product> items;
+  StreamSubscription<Event> _onProductAddedSubscription;
+  StreamSubscription<Event> _onProductChangeSubscription;
+
   @override
   void initState() {
+    // ignore: deprecated_member_use
+    items = new List();
+    _onProductAddedSubscription =
+        productReference.onChildAdded.listen(_onProductAdded);
+    _onProductChangeSubscription =
+        productReference.onChildAdded.listen(_onProductUpdate);
     super.initState();
   }
 
   @override
   void dispose() {
+    _onProductAddedSubscription.cancel();
+    _onProductChangeSubscription.cancel();
     super.dispose();
   }
 
@@ -72,6 +85,17 @@ class _ProductsPageState extends State<ProductsPage> {
     setState(() {
       items[items.indexOf(oldProductValue)] =
           new Product.fromSnapShot(event.snapshot);
+    });
+  }
+
+  // ignore: unused_element
+  Future<void> _deleteProduct(
+      BuildContext context, Product product, int position) async {
+    await productReference.child(product.id).remove().then((_) {
+      setState(() {
+        items.removeAt(position);
+        Navigator.pushNamed(context, ProductsPage.id);
+      });
     });
   }
 
