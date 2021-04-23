@@ -46,22 +46,33 @@ class _ProductNewScreenState extends State<ProductNewScreen> {
           title: Text('Nuevo Dulce'),
         ),
         drawer: SideBarWidget(),
-        body: Container(
-          height: 600.0,
-          child: Card(
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(30),
-            ),
-            elevation: 20.0,
-            child: Column(
-              children: [
-                Padding(
-                  padding: EdgeInsets.only(top: 15.0, left: 20.0, right: 20.0),
-                  child: (widget.product.id != null)
-                      ? Text("Editar dulce")
-                      : Text("Nuevo dulce"),
-                )
-              ],
+        body: Center(
+          child: Container(
+            height: 600.0,
+            child: Card(
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(30),
+              ),
+              elevation: 20.0,
+              child: Column(
+                children: [
+                  Padding(
+                    padding:
+                        EdgeInsets.only(top: 15.0, left: 20.0, right: 20.0),
+                    child: (widget.product.id != null)
+                        ? Text(
+                            "Editar dulce",
+                            style: TextStyle(
+                                fontSize: 25.0, fontWeight: FontWeight.bold),
+                          )
+                        : Text(
+                            "Nuevo dulce",
+                            style: TextStyle(
+                                fontSize: 25.0, fontWeight: FontWeight.bold),
+                          ),
+                  )
+                ],
+              ),
             ),
           ),
         ),
