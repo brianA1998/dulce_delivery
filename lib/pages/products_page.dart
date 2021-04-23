@@ -14,6 +14,7 @@ class ProductsPage extends StatefulWidget {
 final productReference = FirebaseDatabase.instance.reference().child('dulces');
 
 class _ProductsPageState extends State<ProductsPage> {
+  List<Product> items;
   @override
   void initState() {
     super.initState();
@@ -41,9 +42,11 @@ class _ProductsPageState extends State<ProductsPage> {
             ),
             SliverList(
               delegate: SliverChildBuilderDelegate(
-                  (BuildContext context, int position) {
-                return Card();
-              }),
+                (BuildContext context, int position) {
+                  return Card();
+                },
+                childCount: items.length,
+              ),
             ),
           ],
         ),
@@ -55,6 +58,21 @@ class _ProductsPageState extends State<ProductsPage> {
         ),
       ),
     );
+  }
+
+  void _onProductAdded(Event event) {
+    setState(() {
+      items.add(new Product.fromSnapShot(event.snapshot));
+    });
+  }
+
+  void _onProductUpdate(Event event) {
+    var oldProductValue =
+        items.singleWhere((product) => product.id == event.snapshot.key);
+    setState(() {
+      items[items.indexOf(oldProductValue)] =
+          new Product.fromSnapShot(event.snapshot);
+    });
   }
 
   //Metodo para pasar a la siguiente pantalla
