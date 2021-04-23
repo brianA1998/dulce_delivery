@@ -7,10 +7,10 @@ class SideBarWidget extends StatelessWidget {
       child: ListView(
         children: <Widget>[
           DrawerHeader(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [Image.asset('assets/img/logo.jpeg')],
-            ),
+            //child: Column(
+            //  crossAxisAlignment: CrossAxisAlignment.start,
+            //  children: [Image.asset('assets/img/logo.jpeg')],
+            //),
             decoration: BoxDecoration(color: Color(0xffDEB887)),
           ),
         ],

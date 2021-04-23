@@ -1,3 +1,4 @@
+import 'package:dulces_delivery/objects/product.dart';
 import 'package:dulces_delivery/widgets/side_bar_widget.dart';
 import 'package:flutter/material.dart';
 
@@ -17,11 +18,20 @@ class _ProductNewScreenState extends State<ProductNewScreen> {
 
   @override
   void initState() {
+    _name = TextEditingController(text: widget.product.name);
+    _price = TextEditingController(text: widget.product.price.toString());
+    _cuantity = TextEditingController(text: widget.product.cuantity.toString());
+    _description = TextEditingController(text: widget.product.description);
+
     super.initState();
   }
 
   @override
   void dispose() {
+    _name.dispose();
+    _price.dispose();
+    _cuantity.dispose();
+    _description.dispose();
     super.dispose();
   }
 
@@ -29,7 +39,32 @@ class _ProductNewScreenState extends State<ProductNewScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        appBar: AppBar(
+          backgroundColor: Color(0xffD2B48C),
+          centerTitle: true,
+          elevation: 20.0,
+          title: Text('Nuevo Dulce'),
+        ),
         drawer: SideBarWidget(),
+        body: Container(
+          height: 600.0,
+          child: Card(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(30),
+            ),
+            elevation: 20.0,
+            child: Column(
+              children: [
+                Padding(
+                  padding: EdgeInsets.only(top: 15.0, left: 20.0, right: 20.0),
+                  child: (widget.product.id != null)
+                      ? Text("Editar dulce")
+                      : Text("Nuevo dulce"),
+                )
+              ],
+            ),
+          ),
+        ),
       ),
     );
   }

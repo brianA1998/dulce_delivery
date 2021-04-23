@@ -39,13 +39,12 @@ class _ProductsPageState extends State<ProductsPage> {
         child: Icon(FontAwesomeIcons.plus),
         elevation: 15.0,
         backgroundColor: Color(0xffD2B48C),
-        onPressed: () {
-          setState(() {});
-        },
+        onPressed: () => _createNewProduct(context),
       ),
     );
   }
 
+  //Metodo para pasar a la siguiente pantalla
   void _createNewProduct(BuildContext context) async {
     await Navigator.push(
       context,
