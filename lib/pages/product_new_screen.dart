@@ -66,6 +66,9 @@ class _ProductNewScreenState extends State<ProductNewScreen> {
                         : _TextLabel("Nuevo Dulce"),
                   ),
                   _nameProduct(),
+                  _priceProduct(),
+                  _cuantityProduct(),
+                  _descriptionProduct(),
                 ],
               ),
             ),
@@ -82,8 +85,65 @@ class _ProductNewScreenState extends State<ProductNewScreen> {
           controller: _name,
           style: TextStyle(fontSize: 20.0, color: Colors.black),
           decoration: InputDecoration(
-            icon: Icon(FontAwesomeIcons.candyCane),
+            icon: Icon(
+              FontAwesomeIcons.candyCane,
+              color: colorPastel,
+            ),
             labelText: 'Nombre del producto',
+            labelStyle: TextStyle(color: colorPastel),
+          )),
+    );
+  }
+
+  Widget _priceProduct() {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 30.0),
+      child: TextField(
+          keyboardType: TextInputType.number,
+          controller: _price,
+          style: TextStyle(fontSize: 20.0, color: Colors.black),
+          decoration: InputDecoration(
+            icon: Icon(
+              FontAwesomeIcons.dollarSign,
+              color: colorPastel,
+            ),
+            labelText: 'Precio del producto',
+            labelStyle: TextStyle(color: colorPastel),
+          )),
+    );
+  }
+
+  Widget _cuantityProduct() {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 30.0),
+      child: TextField(
+          keyboardType: TextInputType.number,
+          controller: _cuantity,
+          style: TextStyle(fontSize: 20.0, color: Colors.black),
+          decoration: InputDecoration(
+            icon: Icon(
+              FontAwesomeIcons.balanceScaleRight,
+              color: colorPastel,
+            ),
+            labelText: 'Cantidad del producto',
+            labelStyle: TextStyle(color: colorPastel),
+          )),
+    );
+  }
+
+  Widget _descriptionProduct() {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 30.0),
+      child: TextField(
+          maxLines: 4,
+          controller: _description,
+          style: TextStyle(fontSize: 20.0, color: Colors.black),
+          decoration: InputDecoration(
+            icon: Icon(
+              FontAwesomeIcons.database,
+              color: colorPastel,
+            ),
+            labelText: 'Descripcion del producto',
             labelStyle: TextStyle(color: colorPastel),
           )),
     );
