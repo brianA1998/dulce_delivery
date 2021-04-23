@@ -30,4 +30,5 @@ class Product {
     _priceProduct = snapshot.value['priceProduct'];
     _cuantityProduct = snapshot.value['cuantityProduct'];
     _descriptionProduct = snapshot.value['descriptionProduct'];
+  }
 }
