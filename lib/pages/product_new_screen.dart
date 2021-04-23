@@ -1,6 +1,7 @@
 import 'package:dulces_delivery/objects/product.dart';
 import 'package:dulces_delivery/widgets/side_bar_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class ProductNewScreen extends StatefulWidget {
   final Product product;
@@ -60,23 +61,39 @@ class _ProductNewScreenState extends State<ProductNewScreen> {
                     padding:
                         EdgeInsets.only(top: 15.0, left: 20.0, right: 20.0),
                     child: (widget.product.id != null)
-                        ? Text(
-                            "Editar dulce",
-                            style: TextStyle(
-                                fontSize: 25.0, fontWeight: FontWeight.bold),
-                          )
-                        : Text(
-                            "Nuevo dulce",
-                            style: TextStyle(
-                                fontSize: 25.0, fontWeight: FontWeight.bold),
-                          ),
-                  )
+                        ? _TextLabel("Editar Dulce")
+                        : _TextLabel("Nuevo Dulce"),
+                  ),
+                  _nameProduct(),
                 ],
               ),
             ),
           ),
         ),
       ),
+    );
+  }
+
+  Widget _nameProduct() {
+    return TextField(
+      controller: _name,
+      style: TextStyle(fontSize: 20.0, color: Colors.black),
+      decoration: InputDecoration(
+        icon: Icon(FontAwesomeIcons.candyCane),
+        labelText: 'Nombre del producto',
+      ),
+    );
+  }
+}
+
+class _TextLabel extends StatelessWidget {
+  final String label;
+  _TextLabel(this.label);
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      label,
+      style: TextStyle(fontSize: 25.0, fontWeight: FontWeight.bold),
     );
   }
 }
