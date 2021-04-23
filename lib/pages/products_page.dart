@@ -26,20 +26,33 @@ class _ProductsPageState extends State<ProductsPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Color(0xffD2B48C),
-        centerTitle: true,
-        elevation: 20.0,
-        title: Text('Dulce Delivery'),
-      ),
-      drawer: SideBarWidget(),
-      body: Center(),
-      floatingActionButton: FloatingActionButton(
-        child: Icon(FontAwesomeIcons.plus),
-        elevation: 15.0,
-        backgroundColor: Color(0xffD2B48C),
-        onPressed: () => _createNewProduct(context),
+    return SafeArea(
+      child: Scaffold(
+        drawer: SideBarWidget(),
+        body: CustomScrollView(
+          physics: ScrollPhysics(),
+          primary: true,
+          slivers: [
+            SliverAppBar(
+              title: Text("Productos"),
+              backgroundColor: Color(0xffF58020),
+              floating: true,
+              centerTitle: true,
+            ),
+            SliverList(
+              delegate: SliverChildBuilderDelegate(
+                  (BuildContext context, int position) {
+                return Card();
+              }),
+            ),
+          ],
+        ),
+        floatingActionButton: FloatingActionButton(
+          child: Icon(FontAwesomeIcons.plus),
+          elevation: 15.0,
+          backgroundColor: Color(0xffD2B48C),
+          onPressed: () => _createNewProduct(context),
+        ),
       ),
     );
   }
